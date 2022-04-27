@@ -1,0 +1,80 @@
+@import '../../styles/variables-and-helpers.scss';
+
+.animated-name-header {
+    $animation-space-between: 0.2s;
+    $animation-speed-s1: 0.5s;
+    $animation-speed-a: 0.6 * $animation-speed-s1;
+    $animation-speed-m: 0.7 * $animation-speed-s1;
+    $animation-speed-o1: 1 * $animation-speed-s1;
+    $animation-speed-l: 0.3 * $animation-speed-s1;
+    $animation-speed-s2: 0.3 * $animation-speed-s1;
+    $animation-speed-o2: 0.4 * $animation-speed-s1;
+    $animation-speed-n: 0.55 * $animation-speed-s1;
+    .name-svg-letter {
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    #name-svg-s1 {
+        $name-s1: 620px;
+        stroke-dasharray: $name-s1;
+        stroke-dashoffset: $name-s1;
+        animation: letterFill $animation-speed-s1 cubic-bezier(0,.5,1,.7) 0s 1 forwards;
+    }
+    #name-svg-a {
+        $name-a: 145px;
+        $animation-delay-a: $animation-speed-s1 + (1 * $animation-space-between);
+        stroke-dasharray: $name-a;
+        stroke-dashoffset: $name-a;
+        animation: letterFill $animation-speed-a cubic-bezier(0,.5,1,.7) $animation-delay-a 1 forwards;
+    }
+    #name-svg-m {
+        $name-m: 355px;
+        $animation-delay-m: $animation-speed-s1 + $animation-speed-a + (2 * $animation-space-between);
+        stroke-dasharray: $name-m;
+        stroke-dashoffset: $name-m;
+        animation: letterFill $animation-speed-m cubic-bezier(0,.5,1,.7) $animation-delay-m 1 forwards;
+    }
+    #name-svg-o1 {
+        $name-o1: 675px;
+        $animation-delay-o1: $animation-speed-s1 + $animation-speed-a + $animation-speed-m + (3 * $animation-space-between);
+        stroke-dasharray: $name-o1;
+        stroke-dashoffset: $name-o1;
+        animation: letterFill $animation-speed-o1 cubic-bezier(0,.5,1,.7) $animation-delay-o1 1 forwards;
+    }
+    #name-svg-l {
+        $name-l: 80px;
+        $animation-delay-l: $animation-speed-s1 + $animation-speed-a + $animation-speed-m + $animation-speed-o1 + (4 * $animation-space-between);
+        stroke-dasharray: $name-l;
+        stroke-dashoffset: $name-l;
+        animation: letterFill $animation-speed-l cubic-bezier(0,.5,1,.7) $animation-delay-l 1 forwards;
+    }
+    #name-svg-s2 {
+        $name-s2: 70px;
+        $animation-delay-s2: $animation-speed-s1 + $animation-speed-a + $animation-speed-m + $animation-speed-o1 + $animation-speed-l + (5 * $animation-space-between);
+        stroke-dasharray: $name-s2;
+        stroke-dashoffset: $name-s2;
+        animation: letterFill $animation-speed-s2 cubic-bezier(0,.5,1,.7) $animation-delay-s2 1 forwards;
+    }
+    #name-svg-o2 {
+        $name-o2: 120px;
+        $animation-delay-o2: $animation-speed-s1 + $animation-speed-a + $animation-speed-m + $animation-speed-o1 + $animation-speed-l + $animation-speed-s2 + (6 * $animation-space-between);
+        stroke-dasharray: $name-o2;
+        stroke-dashoffset: $name-o2;
+        animation: letterFill $animation-speed-o2 cubic-bezier(0,.5,1,.7) $animation-delay-o2 1 forwards;
+    }
+    #name-svg-n {
+        $name-n: 295px;
+        $animation-delay-n: $animation-speed-s1 + $animation-speed-a + $animation-speed-m + $animation-speed-o1 + $animation-speed-l + $animation-speed-s2 + $animation-speed-o2 + (7 * $animation-space-between);
+        stroke-dasharray: $name-n;
+        stroke-dashoffset: $name-n;
+        animation: letterFill $animation-speed-n cubic-bezier(0,.5,1,.7) $animation-delay-n 1 forwards;
+    }
+    @keyframes letterFill {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+}
