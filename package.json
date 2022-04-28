@@ -2,6 +2,7 @@
   "name": "welcome-princessosaurus",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://princessosaurus.github.io/portfolio/",
   "dependencies": {
     "lodash": "^4.17.21",
     "react": "^18.0.0",
