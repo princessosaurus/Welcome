@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  font-family: 'Bradley Hand', 'Courier', 'Avenir', 'Arial', sans-serif;
+  font-family: 'blambot-pro', 'john-doe', 'Courier', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

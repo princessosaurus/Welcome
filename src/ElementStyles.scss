@@ -1,0 +1,96 @@
+@import './styles/variables-and-helpers.scss';
+
+h1, h2, h3, h4, h5, h6, p, button, li {
+  color: $primary-dark;
+}
+a, button {
+  color: $custom-pink;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+h1, h2, h3, h4 {
+  text-align: center;
+  font-family: 'blambot-pro', 'Avenir', 'Arial', sans-serif;
+}
+h5, h6 {
+  text-align: center;
+  font-family: 'john-doe', 'Courier', 'Arial', sans-serif;
+}
+p, button, li {
+  font-family: 'john-doe', 'Courier', 'Arial', sans-serif;
+}
+p, li {
+  margin: 0 0 5px;
+}
+p, ul {
+  margin: 0 0 15px;
+}
+ul {
+  padding-left: 20px;
+}
+li ul {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: rem-calc(32);
+  font-weight: 700;
+  line-height: 1.4;
+}
+h2 {
+  font-size: rem-calc(24);
+  font-weight: 700;
+  line-height: 1.4;
+}
+h3 {
+  font-size: rem-calc(18);
+  font-weight: 700;
+  line-height: 1.4;
+}
+h4 {
+  font-size: rem-calc(16);
+  font-weight: 400;
+  line-height: 1.4;
+}
+h5 {
+  font-size: rem-calc(16);
+  font-weight: 700;
+  line-height: 1.5;
+}
+h6 {
+  font-size: rem-calc(11);
+  font-weight: 400;
+  line-height: 1.2;
+}
+p, li {
+  text-align: left;
+  font-size: rem-calc(16);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media #{$bp-mobile} {
+  h1 {
+    font-size: rem-calc(24);
+  }
+  h2 {
+    font-size: rem-calc(20);
+  }
+  h3 {
+    font-size: rem-calc(16);
+  }
+  h4 {
+    font-size: rem-calc(14);
+  }
+  h5 {
+    font-size: rem-calc(14);
+  }
+  p {
+    font-size: rem-calc(14);
+  }
+  ul {
+    padding-left: 10px;
+  }
+}

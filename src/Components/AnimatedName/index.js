@@ -5,6 +5,7 @@ import './AnimatedName.scss';
 function AnimatedName() {
   return (
     <svg className="animated-name-header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 556 301" role="img">
+        <title>Sam Olson</title>
         <mask id="nameMask">
             <path class="name-svg-letter" id="name-svg-n" d="M466.7,135.1c0,12.1,0.1,24.3,0.1,36.4c-1.9-14.7,0.3-29.9,6.2-43.4c1.6-3.6,4.8-7.7,8.5-6.3c2.6,1,3.5,4.2,3.9,6.9c5.3,32.2,4.1,65.3,11.9,97s27.6,63.3,59,72.3" />
             <path class="name-svg-letter" id="name-svg-o2" d="M448,125.9c-8.7,9.3-13.2,22.4-12,35c0.3,3.1,1.1,6.5,3.5,8.4c4.8,3.8,12-0.6,15.5-5.6c7.6-10.9,8.7-25.9,3-37.9c-2.3-4.8-7.2-9.7-12.3-8.1" />

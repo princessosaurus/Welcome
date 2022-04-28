@@ -1,0 +1,43 @@
+@mixin paper-corner($length, $curlAmt, $cornerX, $cornerY, $vertical, $sheetColor, $place) {
+  @if $vertical {
+    border-#{$cornerY}-#{$cornerX}-radius: $curlAmt $length;
+  } @else {
+    border-#{$cornerY}-#{$cornerX}-radius: $length $curlAmt;
+  }
+  overflow: hidden;
+  &:#{$place} {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: $z-index-main + 1;
+    width: 0;
+    height: 0;
+    border: 0px solid transparent;
+
+    $overflowAmt: calc($curlAmt / -2);
+    $colorBorder: $curlAmt solid darken($sheetColor, 10%);
+    $borderSmall: $curlAmt solid transparent;
+    $borderLong: ($length - $curlAmt) solid transparent;
+    @if $vertical {
+      #{$cornerX}: 0;
+      #{$cornerY}: $overflowAmt;
+      border-#{$cornerX}: $colorBorder;
+      border-#{$cornerY}: $borderSmall;
+      @if $cornerY == top {
+        border-bottom: $borderLong;
+      } @else {
+        border-top: $borderLong
+      }
+    } @else {
+      #{$cornerY}: 0;
+      #{$cornerX}: $overflowAmt;
+      border-#{$cornerY}: $colorBorder;
+      border-#{$cornerX}: $borderSmall;
+      @if $cornerX == right {
+        border-left: $borderLong;
+      } @else {
+        border-right: $borderLong
+      }
+    }
+  }
+}

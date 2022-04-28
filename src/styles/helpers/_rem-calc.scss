@@ -1,0 +1,7 @@
+$rem-default: 16;
+
+@function rem-calc($px-size) {
+  $rem-size: calc($px-size / $rem-default * 1rem);
+  @if ($rem-size == 0rem) { $rem-size: 0; }
+  @return $rem-size;
+}

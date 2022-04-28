@@ -1,29 +1,211 @@
 import AnimatedName from './Components/AnimatedName';
 
 // import nameImage from './assets/name-proper-size.png';
+import arrowImage from './assets/arrow.png';
+// import arrowLeftImage from './assets/arrow-left.png';
+import arrowRightImage from './assets/arrow-right.png';
+import diplomaImage from './assets/diploma.png';
 
 import './App.scss';
+import './ElementStyles.scss';
+import './SpecificStyles.scss';
 
 function App() {
   return (
     <div className="App">
       <header className="block">
-        {/* <img src={nameImage} alt="Sam Olson" /> */}
-        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 556 301" role="img">
-          <mask id="nameMask">
-            <path class="name-svg-letter" id="name-svg-n" d="M466.7,135.1c0,12.1,0.1,24.3,0.1,36.4c-1.9-14.7,0.3-29.9,6.2-43.4c1.6-3.6,4.8-7.7,8.5-6.3c2.6,1,3.5,4.2,3.9,6.9c5.3,32.2,4.1,65.3,11.9,97s27.6,63.3,59,72.3" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-o2" d="M448,125.9c-8.7,9.3-13.2,22.4-12,35c0.3,3.1,1.1,6.5,3.5,8.4c4.8,3.8,12-0.6,15.5-5.6c7.6-10.9,8.7-25.9,3-37.9c-2.3-4.8-7.2-9.7-12.3-8.1" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-s2" d="M422.2,123.6c-3.9-2.7-9.9,1-10.6,5.7c-0.8,4.7,2,9.4,5.4,12.8s7.4,6.2,10.3,10s4.4,9.3,1.9,13.4c-2.5,4.1-10,4.3-11.5-0.2" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-l" d="M403.8,85.9c0.7,28-0.5,56-3.6,83.8" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-o1" d="M277.6,81.8c-14.3,26.3-24.2,54.9-29.2,84.4c-3,18-4.1,36.9,1.8,54.1s20.2,32.5,38.2,35.3c21.8,3.3,42.1-11.7,56.6-28.4c40.2-46.3,56.1-110.2,53.5-171.5c-0.9-20-6-43.3-24.3-51.3c-14.7-6.4-31.9,0.2-44.6,9.9c-30.9,23.5-45.3,62.9-51.7,101.2" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-m" d="M178.3,128.5c0,11.1-0.1,22.2-0.1,33.3c0.2-12.5,5.7-34.4,11.8-35c3,1.6,2.6,17.8,2,24.6c5-12.8,10-37,20-39.5c7-0.5,5.7,46.6,4.8,70.1c-1,23.5-1.8,47.6,5.3,70.1s23.7,43.4,46.5,49" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-a" d="M155.8,123.7c-0.6-4,1.7-8.9,5.7-8.9c2.3,0,4.3,1.7,5.4,3.8c1,2.1,1.3,4.4,1.5,6.7c1.4,13.6,2.8,27.4,2.2,41.1c0.2-5.4,0.1-10.9-0.3-16.3c-0.2-2.1-0.5-4.4-2.1-5.8c-2.5-2.1-6.4-0.7-9,1.3c-5,3.7-8.8,9-10.8,14.9c-0.9,2.7-1.1,6.4,1.4,7.8c1.6,0.9,3.7,0.4,5.5-0.3c4.8-1.9,9.2-4.8,12.7-8.6" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="name-svg-letter" id="name-svg-s1" d="M94.7,38.3c6.2-15-4.8-34.7-20.9-36.2S43,19.1,49.1,34.1c3.1,7.6,10.1,12.9,16.8,17.7c29.2,21,60.4,41.9,77.6,73.6c14.9,27.5,17.2,62.1,3.5,90.2s-43.8,48.1-75,47.4c-31.2-0.8-61.3-23.8-67.9-54.3c-8-37.1,16.5-72.7,40.2-102.3" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          </mask>
-          <image href={nameImage} x="0" y="0" width="556" height="301" mask="url(#nameMask)" />
-        </svg> */}
-        <AnimatedName />
+        <div className="element">
+          <AnimatedName />
+        </div>
+        <div className="element">
+          <h1>Welcome to my portfolio page!</h1>
+          <p>I am a passionate programmer with an eye for visual design and a love of learning new skills.</p>
+        </div>
       </header>
+      <section className="block mobile-only">
+        <h2>Small Screen Notice</h2>
+        <div className="element">
+          <h3 className="element-head">The best experience will be on a larger screen.</h3>
+          <div className="element-content">
+            <p>This page does support mobile viewing, but due to the nature of the content, the most dynamic and easy-to-read experience will be on a larger screen.</p>
+          </div>
+        </div>
+      </section>
+      <section className="block">
+        <h2>Work Experience</h2>
+        <div className="element element-has-sub">
+          <h3 className="element-head">The Walt Disney Company</h3>
+          <h5 className="element-date">July 2015–Present</h5>
+          <div className="element-content">
+            <div className="element-sub-wrapper">
+              <div className="element element-sub">
+                <h3 className="element-head">Sr. Web Developer</h3>
+                <h4 className="element-subhead">DCCR, Corporate</h4>
+                <h5 className="element-date">August 2019–Present</h5>
+                <div className="element-content">
+                  <ul>
+                    <li>
+                      Construct full-stack projects using customized technologies to fit the unique needs of each client
+                      <ul>
+                        <li>Guide the creation of design systems and use them to build modular web applications backed by AWS systems for widespread public viewing (ex. <a href="https://d23expo.com/" target="_blank" rel="noopener noreferrer">D23Expo.com</a> and <a href="https://socialresponsibility.disney.com/" target="_blank" rel="noopener noreferrer">socialresponsibility.disney.com</a>)</li>
+                        <li>Collaborate with design/UX to build accessible sites and applications (ex. A fully accessible virtual escape room)</li>
+                        <li>Build extensible and modular tools for future iteration: a tool originally created so that employees could create cards to be sent to emergency workers was used numerous times with new features and appearances</li>
+                        <li>Maintained and updated pre-existing sites, including implementing AWS functionalities, APIs, and SSO</li>
+                      </ul>
+                    </li>
+                    <li>Lead software supervisor/consultant on large tech collaborations with other teams (ex. <a href="https://d23.com/" target="_blank" rel="noopener noreferrer">d23.com</a> redesign)</li>
+                    <li>
+                      Foster my interest in innovation and learning to stay sharp as the group’s sole software engineer:
+                      <ul>
+                        <li>Multitask many diverse projects requiring differing skill sets and the ability to pivot due to changes in direction and prioritization (5-10 projects at once amounting to over one hundred projects on this team)</li>
+                        <li>Communicate technical information to non-technical parties to inform timelines, budget, and implementation</li>
+                        <li>Anticipate the team’s needs when setting engineering direction and maintaining best practices</li>
+                      </ul>
+                    </li>
+                    <li>Interface with prominent clients to develop critical communications and newsletters, emails from head executives, and live events of all types and audience sizes (ex. Reimagine Tomorrow)</li>
+                    <li>Collaborate to hire and mentor multiple web development interns and a web developer</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="element element-sub">
+                <h3 className="element-head">Software Engineer</h3>
+                <h3 className="element-head">Associate Software Engineer</h3>
+                <h4 className="element-subhead">Matterhorn, DCPI/DTCI</h4>
+                <h5 className="element-date">March 2016–August 2019</h5>
+                <div className="element-content">
+                  <ul>
+                    <li>
+                      Researched and learned emerging technologies to integrate into original products
+                      <ul>
+                        <li>Ideated highly extensible scroll reveal experience which I then created, helped design, and release</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Collaborated and offered input in multiple disciplines to bring projects to production
+                      <ul>
+                        <li>Worked closely with design and product on multiple site redesigns, user interactibles, and new experiences</li>
+                        <li>Integrated and optimized use with external technologies such as Google AMP</li>
+                        <li>Ex. Shoppable blogs, Disney Yourself Avatar Creator, <a href="https://www.readriordan.com/" target="_blank" rel="noopener noreferrer">readriordan.com</a>, <a href="https://dmedmedia.disney.com/" target="_blank" rel="noopener noreferrer">dtcimedia.disney.com</a>, <a href="https://www.disney.com/" target="_blank" rel="noopener noreferrer">Disney.com</a>, and <a href="https://www.starwars.com/" target="_blank" rel="noopener noreferrer">StarWars.com</a></li>
+                      </ul>
+                    </li>
+                    <li>Involved in leadership roles to maintain excellence in code health, accessibility, and documentation</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="element element-sub">
+                <h3 className="element-head">Web Development Intern</h3>
+                <h4 className="element-subhead">Matterhorn, DCPI/DTCI</h4>
+                <h5 className="element-date">July 2015–March 2016</h5>
+                <div className="element-content">
+                  <ul>
+                    <li>Adapted the UI for Matterhorn Core (a structured repository) for efficient usage and consistency</li>
+                    <li>Programed new features for WordPress and implemented the redesign of select Disney blogs</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="element element-sub">
+              <h3 className="element-head">Participation and Giving Back</h3>
+              <div className="element-content">
+                <ul>
+                  <li>
+                    Passion for mentorship and tech evangelism
+                    <ul>
+                      <li>Mentor for Disney’s Code Rosie program</li>
+                      <li>Tech mentor: Warriors Who Code Challenge</li>
+                      <li>Taught an Intro to Electronics Class</li>
+                      <li>Disney’s Women & Tech committee member (former)</li>
+                      <li>Stanford Society of Women Engineers Evening with Industry Panelist</li>
+                      <li>Disney Tech Rep. at Stanford Tree Hacks & Cal Tech Hack Days</li>
+                    </ul>
+                  </li>
+                  <li>Leader of Makers at Disney, a group of over 650 Disney employees exploring new technologies</li>
+                  <li>Crisis Management-Group leader, Building area leader, crisis response champion (former)</li>
+                  <li>
+                    Disney Hack days: 
+                    <ul>
+                      <li>Code teaching game for young children</li>
+                      <li>Created in-store interactions (winner)</li>
+                      <li>AR iPhone app (explored for continued development)</li>
+                      <li>Bot battles (runner up)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <img src={arrowImage} alt="" className="detail-image" id="disney-detail-1" />
+              <img src={arrowImage} alt="" className="detail-image" id="disney-detail-2" />
+            </div>
+          </div>
+        </div>
+        <div className="element">
+          <h3 className="element-head">Ops Analysis and Technology Intern</h3>
+          <h4 className="element-subhead">Fox Home Entertainment</h4>
+          <h5 className="element-date">February 2015–April 2015</h5>
+          <div className="element-content">
+            <ul>
+              <li>Database manipulation and creation for internal, organizational purposes</li>
+              <li>Front-end development of user-interface with database</li>
+              <li>Creation of web-based reporting tool with data organization streamlined for swift use in global sales</li>
+            </ul>
+          </div>
+        </div>
+        <div className="element">
+          <h3 className="element-head">Graphic Design and Web Development Intern</h3>
+          <h4 className="element-subhead">Pepperdine University</h4>
+          <h5 className="element-date">August 2013–February 2015</h5>
+          <div className="element-content">
+            <ul>
+              <li>Extensive print and web design for events, the Pepperdine Magazine, and the university website</li>
+              <li>PHP and HTML coding to update the Pepperdine University website</li>
+            </ul>
+          </div>
+        </div>
+        <div className="element">
+          <h3 className="element-head">Previous Jobs:</h3>
+          <div className="element-content">
+            <ul>
+              <li>Graphic Design Intern–JJ&A</li>
+              <li>Intern–A52</li>
+              <li>Waitress</li>
+            </ul>
+          </div>
+          <img src={arrowRightImage} alt="" className="detail-image" id="disney-detail-3" />
+        </div>
+      </section>
+      <section className="block">
+        <h2>Education</h2>
+        <div className="element">
+          <h3 className="element-head">Pepperdine University</h3>
+          <h4 className="element-subhead">Major: Computer Science/Mathematics</h4>
+          <h4 className="element-subhead">Minor: Multimedia Design</h4>
+          <h4 className="element-subhead">GPA 3.84, Magna Cum Laude</h4>
+          <h5 className="element-date">August 2011–May 2015</h5>
+          <div className="element-content">
+            <ul>
+              <li>Awards: Regents Scholarship (4 year, academic, $104,000) & Litton Industries Endowed CS Scholarship</li>
+              <li>Activities: Resident Advisor, Research Position, Pepperdine Colleges Against Cancer Committee Chair</li>
+            </ul>
+          </div>
+          <img src={diplomaImage} alt="" className="detail-image" id="education-detail" />
+        </div>
+      </section>
+      <section className="block">
+        <h2>Skills</h2>
+        <div className="element">
+          <div className="element-content">
+            <ul>
+              <li><span style={{fontWeight:700}}>Software:</span> AWS, React, JavaScript, JQuery, JSON, NodeJS, CSS/SASS, DynamoDB, Grunt, PHP, HTML, HAML, Mustache, WordPress, Git, GitLab, GitHub, Jenkins, Confluence, Agile Development, JIRA, Slack, Homebrew, Backbone, Ruby on Rails, C++, Java, Object- Oriented Programming, Data Structures, Arduino, Python, SQL, MongoDB; Experience with Go, Docker, Swift, Xcode (give me a language; I’ll learn it)</li>
+              <li><span style={{fontWeight:700}}>Design:</span> Proficient in UX/UI Design, Photoshop, Illustrator, InDesign, Figma, Sketch, Invision, Keynote</li>
+              <li><span style={{fontWeight:700}}>Interests:</span> Communication, Wearable Technology, 3D Modeling/Printing, Triathlete, Golf, Disney Cast Choir, Sewing, Crocheting, Wedding Coordinator, Former Ski Patroller, Winter Park Mountain Host</li>
+              <li><span style={{fontWeight:700}}>I do things. And I make things. And they come out cool.</span></li>
+            </ul>
+          </div>
+          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-1" />
+          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-2" />
+          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-3" />
+          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-4" />
+        </div>
+      </section>
     </div>
   );
 }
