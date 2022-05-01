@@ -9,10 +9,12 @@ import arrowImage from './assets/arrow.png';
 // import arrowLeftImage from './assets/arrow-left.png';
 import arrowRightImage from './assets/arrow-right.png';
 import diplomaImage from './assets/diploma.png';
+import {ReactComponent as WideInkBottle} from './assets/wide-ink-new.svg';
 
 import './App.scss';
 import './ElementStyles.scss';
 import './SpecificStyles.scss';
+import './InkBottle.scss';
 
 function App() {
 
@@ -125,7 +127,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="block">
+      <section className="block has-ink-spill">
         <h2>Work Experience</h2>
         <div className="element element-has-sub">
           <h3 className="element-head">The Walt Disney Company</h3>
@@ -265,6 +267,7 @@ function App() {
           </div>
           <img src={arrowRightImage} alt="" className={prevJobsDetailClasses} id="prev-jobs-detail" ref={prevJobsDetail} />
         </div>
+        <WideInkBottle className="ink-bottle" />
       </section>
       <section className="block">
         <h2>Education</h2>

@@ -4,11 +4,11 @@ h1, h2, h3, h4, h5, h6, p, button, li {
   color: $primary-dark;
 }
 a, button {
-  color: $custom-pink;
-  text-decoration: none;
+  color: $primary-dark;
+  text-decoration: underline;
   overflow-wrap: break-word;
   &:hover {
-    text-decoration: underline;
+    color: $custom-pink;
   }
 }
 h1, h2, h3, h4 {

@@ -19,27 +19,41 @@
     background: $paper-color;
     box-shadow: 8px 3px 16px 3px rgba($primary-dark, 0.2);
     border-radius: 0;
+    z-index: $z-index-main - 3;
     &:nth-child(1) {
-      @include paper-corner(50px, 12px, left, bottom, true, $paper-color, after);
-      @include paper-corner(90px, 30px, right, top, false, $paper-color, before);
+      @include paper-corner(50px, 12px, left, bottom, true, $paper-color-shadow, after);
+      @include paper-corner(90px, 30px, right, top, false, $paper-color-shadow, before);
     }
     &:nth-child(2) {
-      @include paper-corner(80px, 20px, left, top, true, $paper-color, after);
-      @include paper-corner(120px, 30px, right, bottom, true, $paper-color, before);
+      @include paper-corner(80px, 20px, left, top, true, $paper-color-shadow, after);
+      @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
     }
     &:nth-child(3) {
-      @include paper-corner(80px, 20px, left, bottom, false, $paper-color, after);
-      @include paper-corner(120px, 30px, right, bottom, false, $paper-color, before);
+      @include paper-corner(80px, 20px, left, bottom, false, $paper-color-shadow, after);
+      @include paper-corner(120px, 30px, right, bottom, false, $paper-color-shadow, before);
     }
     &:nth-child(4) {
-      @include paper-corner(70px, 15px, left, top, false, $paper-color, after);
+      @include paper-corner(70px, 15px, left, top, false, $paper-color-shadow, after);
     }
     &:nth-child(5) {
-      @include paper-corner(80px, 20px, right, top, true, $paper-color, after);
-      @include paper-corner(120px, 30px, right, bottom, true, $paper-color, before);
+      @include paper-corner(80px, 20px, right, top, true, $paper-color-shadow, after);
+      @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
     }
     &.mobile-only {
       display: none;
+    }
+    &.has-ink-spill .element {
+      h1, h2, h3, h4, h5, h6, p, button, li {
+        color: $paper-color;
+      }
+      a, button {
+        color: $paper-color;
+        text-decoration: underline;
+        overflow-wrap: break-word;
+        &:hover {
+          color: $primary-light;
+        }
+      }
     }
     .element {
       display: block;
@@ -55,6 +69,7 @@
       // border-image-outset: 10px 14px 27px 15px;
       border-image-outset: 0px 6px 4px 9px;
       border-image-repeat: round;
+      z-index: $z-index-main;
       &:last-child {
         margin-bottom: 0;
       }

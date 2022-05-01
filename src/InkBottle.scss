@@ -1,0 +1,50 @@
+@import './styles/variables-and-helpers.scss';
+
+.ink-bottle {
+  display: block;
+  position: absolute;
+  top: 35px;
+  left: 5%;
+  width: 165px;
+  // width: 25%;
+  // max-width: 275px;
+  z-index: $z-index-main - 1;
+  transition: all 0.3s cubic-bezier(.75,0,1,.5);
+  transform: rotate(0deg);
+
+  .bottle-background-fill {
+    fill: $glass-color;
+  }
+  .bottle-ink-fill {
+    fill: $custom-pink;
+    transition: opacity 0.5s linear
+  }
+  .bottle-border-fill {
+    fill: $primary-dark;
+  }
+  .bottle-shine-fill {
+    fill: $primary-light;
+  }
+  .ink-not-tipped {
+    opacity: 1;
+  }
+  .ink-tipped-right, .ink-tipped-left {
+    opacity: 0;
+  }
+  &.bottle-tipped {
+    transform: rotate(54deg);
+    transform-origin: 78% 96%;
+    .ink-not-tipped {
+      opacity: 0;
+    }
+    .ink-tipped-right {
+      opacity: 1;
+    }
+  }
+}
+
+@media #{$bp-tablet-portrait-down} {
+  .ink-bottle {
+    display: none;
+  }
+}

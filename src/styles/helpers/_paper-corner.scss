@@ -17,7 +17,7 @@
     border-color: transparent;
 
     $overflowAmt: calc($curlAmt / -2);
-    $colorBorder: darken($sheetColor, 10%);
+    $colorBorder: $sheetColor;
     $colorBorderWidth: $curlAmt;
     $borderSmall: $curlAmt;
     $borderLong: ($length - $curlAmt);
