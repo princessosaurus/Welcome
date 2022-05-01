@@ -7,7 +7,7 @@
   height: 100%;
   min-height: 100vh;
   margin: 0;
-  padding: 20px;
+  padding: 20px 20px 100px;
   background: $table-color;
   .block {
     display: block;
@@ -124,6 +124,7 @@
     display: block;
     position: absolute;
     z-index: $z-index-main + 1;
+    opacity: 1;
   }
 }
 
@@ -137,9 +138,9 @@
         margin-bottom: 30px;
       }
     }
-    .detail-image {
-      display: none;
-    }
+    // .detail-image {
+    //   display: none;
+    // }
   }
 }
 

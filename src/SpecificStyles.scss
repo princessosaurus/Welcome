@@ -13,6 +13,17 @@ header .element {
   }
 }
 
+$education-transform-rotate: rotate(-100deg);
+$skills1-transform-rotate: rotate(45deg);
+$skills2-transform-rotate: rotate(135deg);
+$skills3-transform-rotate: rotate(-142deg);
+$skills4-transform-rotate: rotate(-48deg);
+$skills-transform-additional: translateX(-15%) scale(1.2);
+$detail-animation-duration: 0.75;
+$detail-animation-iterations: 8;
+$detail-animation-settings: #{$detail-animation-duration}s ease-in-out 0s $detail-animation-iterations alternate;
+$detail-animation-iterations-mobile: 6;
+$detail-animation-settings-mobile: #{$detail-animation-duration}s ease-in-out 0s $detail-animation-iterations-mobile alternate;
 .App .detail-image {
   &#disney-detail-1 {
     top: 0;
@@ -27,7 +38,7 @@ header .element {
     width: 135px;
     transform: translate(-50%, 70%) rotate(-105deg);
   }
-  &#disney-detail-3 {
+  &#prev-jobs-detail {
     top: -90px;
     left: 72%;
     width: 145px;
@@ -37,34 +48,193 @@ header .element {
     top: -35px;
     left: -5px;
     width: 130px;
-    transform: rotate(-100deg);
+    transform: $education-transform-rotate;
   }
   &#skills-detail-1 {
     top: -31px;
     left: -35px;
     width: 110px;
     height: 100px;
-    transform: rotate(45deg);
+    transform: $skills1-transform-rotate;
   }
   &#skills-detail-2 {
     top: -22px;
     right: -33px;
     width: 110px;
     height: 85px;
-    transform: rotate(135deg);
+    transform: $skills2-transform-rotate;
   }
   &#skills-detail-3 {
     bottom: -37px;
     right: -28px;
     width: 90px;
     height: 110px;
-    transform: rotate(-142deg);
+    transform: $skills3-transform-rotate;
   }
   &#skills-detail-4 {
     bottom: -22px;
     left: -30px;
     width: 110px;
     height: 90px;
-    transform: rotate(-48deg);
+    transform: $skills4-transform-rotate;
+  }
+  &.active-animation {
+    &#disney-detail-1 {
+      animation: disneyDetail1Anim $detail-animation-settings;
+    }
+    &#disney-detail-2 {
+      animation: disneyDetail2Anim $detail-animation-settings;
+    }
+    &#prev-jobs-detail {
+      animation: prevJobsDetailAnim $detail-animation-settings;
+    }
+    &#education-detail {
+      animation: educationDetailAnim $detail-animation-settings;
+    }
+    &#skills-detail-1 {
+      animation: skills1DetailAnim $detail-animation-settings;
+    }
+    &#skills-detail-2 {
+      animation: skills2DetailAnim $detail-animation-settings;
+    }
+    &#skills-detail-3 {
+      animation: skills3DetailAnim $detail-animation-settings;
+    }
+    &#skills-detail-4 {
+      animation: skills4DetailAnim $detail-animation-settings;
+    }
+  }
+}
+
+@media #{$bp-tablet-portrait-down} {
+  .App .detail-image {
+    &#disney-detail-1 {
+      width: 100px;
+      height: 90px;
+      transform: translate(-50%, -60%) rotate(90deg);
+    }
+    &#disney-detail-2 {
+      width: 115px;
+    }
+    &#prev-jobs-detail {
+      top: -70px;
+      left: 79%;
+      width: 100px;
+    }
+    &#education-detail {
+      top: -60px;
+      left: 6px;
+      width: 100px;
+      transform: rotate(-75deg);
+    }
+    &#skills-detail-1 {
+      top: -22px;
+      left: -21px;
+      width: 88px;
+      height: 80px;
+      transform: rotate(48deg);
+    }
+    &#skills-detail-2 {
+      right: -15px;
+      width: 100px;
+      height: 77px;
+      transform: rotate(120deg);
+    }
+    &#skills-detail-3 {
+      bottom: -24px;
+      right: -14px;
+      width: 80px;
+      height: 98px;
+      transform: rotate(-135deg);
+    }
+    &#skills-detail-4 {
+      bottom: -26px;
+      left: -28px;
+      width: 95px;
+      height: 77px;
+      transform: rotate(-65deg);
+    }
+    $detail-animation-fade-settings: detailFadeAnim 1s ease-in #{$detail-animation-duration * $detail-animation-iterations-mobile - 0.5}s 1 normal forwards;
+    &.active-animation {
+      &#disney-detail-1 {
+        animation: disneyDetail1Anim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#disney-detail-2 {
+        animation: disneyDetail2Anim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#prev-jobs-detail {
+        animation: prevJobsDetailAnimMobile $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#education-detail {
+        animation: educationDetailAnim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#skills-detail-1 {
+        animation: skills1DetailAnim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#skills-detail-2 {
+        animation: skills2DetailAnim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#skills-detail-3 {
+        animation: skills3DetailAnim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+      &#skills-detail-4 {
+        animation: skills4DetailAnim $detail-animation-settings-mobile, $detail-animation-fade-settings;
+      }
+    }
+  }
+}
+
+@keyframes detailFadeAnim {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes disneyDetail1Anim {
+  to {
+    top: -50px;
+  }
+}
+@keyframes disneyDetail2Anim {
+  to {
+    bottom: -50px;
+  }
+}
+@keyframes prevJobsDetailAnim {
+  to {
+    top: -60px;
+    left: 70%;
+    transform: rotate(38deg);
+  }
+}
+@keyframes prevJobsDetailAnimMobile {
+  to {
+    top: -35px;
+    left: 76%;
+    transform: rotate(38deg);
+  }
+}
+@keyframes educationDetailAnim {
+  to {
+    transform: $education-transform-rotate scale(1.2);
+  }
+}
+@keyframes skills1DetailAnim {
+  to {
+    transform: $skills1-transform-rotate $skills-transform-additional;
+  }
+}
+@keyframes skills2DetailAnim {
+  to {
+    transform: $skills2-transform-rotate $skills-transform-additional;
+  }
+}
+@keyframes skills3DetailAnim {
+  to {
+    transform: $skills3-transform-rotate $skills-transform-additional;
+  }
+}
+@keyframes skills4DetailAnim {
+  to {
+    transform: $skills4-transform-rotate $skills-transform-additional;
   }
 }

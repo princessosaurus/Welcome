@@ -1,3 +1,7 @@
+import {useState, useEffect, useRef} from 'react';
+
+import _throttle from 'lodash/throttle';
+
 import AnimatedName from './Components/AnimatedName';
 
 // import nameImage from './assets/name-proper-size.png';
@@ -11,6 +15,96 @@ import './ElementStyles.scss';
 import './SpecificStyles.scss';
 
 function App() {
+
+  const detailClass = 'detail-image';
+
+  // Disney Detail Info
+  const [animDisneyDetail, setAnimDisneyDetail] = useState(false);
+  const animDisneyDetailRef = useRef(animDisneyDetail);
+  const disneyDetail = useRef(null);
+  let disneyDetailClasses = detailClass + (animDisneyDetail ? ' active-animation' : '');
+
+  // Prev Jobs Detail Info
+  const [animPrevJobsDetail, setAnimPrevJobsDetail] = useState(false);
+  const animPrevJobsDetailRef = useRef(animPrevJobsDetail);
+  const prevJobsDetail = useRef(null);
+  let prevJobsDetailClasses = detailClass + (animPrevJobsDetail ? ' active-animation' : '');
+
+  // Education Detail Info
+  const [animEducationDetail, setAnimEducationDetail] = useState(false);
+  const animEducationDetailRef = useRef(animEducationDetail);
+  const educationDetail = useRef(null);
+  let educationDetailClasses = detailClass + (animEducationDetail ? ' active-animation' : '');
+
+  // Skills Detail Info
+  const [animSkillsDetail, setAnimSkillsDetail] = useState(false);
+  const animSkillsDetailRef = useRef(animSkillsDetail);
+  const skillsDetail = useRef(null);
+  let skillsDetailClasses = detailClass + (animSkillsDetail ? ' active-animation' : '');
+
+  // const [scrollAmt, setScrollAmt] = useState(0);
+  const handleScroll = () => {
+    // let currentScrollAmount = window && window.pageYOffset;
+    let windowHeight = window && window.innerHeight;
+    
+    // Disney Detail Animation
+    if (!(animDisneyDetailRef && animDisneyDetailRef.current) && windowHeight) {
+      let disneyDetailClientRect = disneyDetail && disneyDetail.current && disneyDetail.current.getBoundingClientRect();
+      let disneyDetailTop = disneyDetailClientRect && disneyDetailClientRect.top;
+      
+      if (disneyDetailTop && ((windowHeight / 2) > disneyDetailTop)) {
+        setAnimDisneyDetail(true);
+        animDisneyDetailRef.current = true;
+      }
+    }
+
+    // Prev Jobs Animation
+    if (!(animPrevJobsDetailRef && animPrevJobsDetailRef.current) && windowHeight) {
+      let prevJobsDetailClientRect = prevJobsDetail && prevJobsDetail.current && prevJobsDetail.current.getBoundingClientRect();
+      let prevJobsDetailTop = prevJobsDetailClientRect && prevJobsDetailClientRect.top;
+      
+      if (prevJobsDetailTop && ((windowHeight / 2) > prevJobsDetailTop)) {
+        setAnimPrevJobsDetail(true);
+        animPrevJobsDetailRef.current = true;
+      }
+    }
+
+    // Education Animation
+    if (!(animEducationDetailRef && animEducationDetailRef.current) && windowHeight) {
+      let educationDetailClientRect = educationDetail && educationDetail.current && educationDetail.current.getBoundingClientRect();
+      let educationDetailTop = educationDetailClientRect && educationDetailClientRect.top;
+      
+      if (educationDetailTop && ((windowHeight / 2) > educationDetailTop)) {
+        setAnimEducationDetail(true);
+        animEducationDetailRef.current = true;
+      }
+    }
+
+    // Skills Animation
+    if (!(animSkillsDetailRef && animSkillsDetailRef.current) && windowHeight) {
+      let skillsDetailClientRect = skillsDetail && skillsDetail.current && skillsDetail.current.getBoundingClientRect();
+      let skillsDetailTop = skillsDetailClientRect && skillsDetailClientRect.top;
+      
+      if (skillsDetailTop && ((windowHeight / 2) > skillsDetailTop)) {
+        setAnimSkillsDetail(true);
+        animSkillsDetailRef.current = true;
+      }
+    }
+
+
+
+    // let currentScrollAmt = window.pageYOffset;
+    // setScrollAmt(currentScrollAmt);
+    
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', _throttle(handleScroll, 500), {passive: true});
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   return (
     <div className="App">
       <header className="block">
@@ -132,8 +226,8 @@ function App() {
                   </li>
                 </ul>
               </div>
-              <img src={arrowImage} alt="" className="detail-image" id="disney-detail-1" />
-              <img src={arrowImage} alt="" className="detail-image" id="disney-detail-2" />
+              <img src={arrowImage} alt="" className={disneyDetailClasses} id="disney-detail-1" ref={disneyDetail} />
+              <img src={arrowImage} alt="" className={disneyDetailClasses} id="disney-detail-2" />
             </div>
           </div>
         </div>
@@ -169,7 +263,7 @@ function App() {
               <li>Waitress</li>
             </ul>
           </div>
-          <img src={arrowRightImage} alt="" className="detail-image" id="disney-detail-3" />
+          <img src={arrowRightImage} alt="" className={prevJobsDetailClasses} id="prev-jobs-detail" ref={prevJobsDetail} />
         </div>
       </section>
       <section className="block">
@@ -186,7 +280,7 @@ function App() {
               <li>Activities: Resident Advisor, Research Position, Pepperdine Colleges Against Cancer Committee Chair</li>
             </ul>
           </div>
-          <img src={diplomaImage} alt="" className="detail-image" id="education-detail" />
+          <img src={diplomaImage} alt="" className={educationDetailClasses} id="education-detail" ref={educationDetail} />
         </div>
       </section>
       <section className="block">
@@ -200,10 +294,10 @@ function App() {
               <li><span style={{fontWeight:700}}>I do things. And I make things. And they come out cool.</span></li>
             </ul>
           </div>
-          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-1" />
-          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-2" />
-          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-3" />
-          <img src={arrowImage} alt="" className="detail-image" id="skills-detail-4" />
+          <img src={arrowImage} alt="" className={skillsDetailClasses} id="skills-detail-1" ref={skillsDetail} />
+          <img src={arrowImage} alt="" className={skillsDetailClasses} id="skills-detail-2" />
+          <img src={arrowImage} alt="" className={skillsDetailClasses} id="skills-detail-3" />
+          <img src={arrowImage} alt="" className={skillsDetailClasses} id="skills-detail-4" />
         </div>
       </section>
     </div>

@@ -9,10 +9,9 @@
     content: '';
     display: block;
     position: absolute;
-    z-index: $z-index-main + 1;
+    z-index: $z-index-main + 2;
     width: 0;
     height: 0;
-    // border: 0px solid transparent;
     border-width: 0px;
     border-style: solid;
     border-color: transparent;
@@ -22,40 +21,26 @@
     $colorBorderWidth: $curlAmt;
     $borderSmall: $curlAmt;
     $borderLong: ($length - $curlAmt);
-
-    // $colorBorder: $curlAmt solid darken($sheetColor, 10%);
-    // $borderSmall: $curlAmt solid transparent;
-    // $borderLong: ($length - $curlAmt) solid transparent;
     @if $vertical {
       #{$cornerX}: 0;
       #{$cornerY}: $overflowAmt;
-      // border-#{$cornerX}: $colorBorder;
-      // border-#{$cornerY}: $borderSmall;
-
       border-#{$cornerX}-color: $colorBorder;
       border-#{$cornerX}-width: $colorBorderWidth;
       border-#{$cornerY}-width: $borderSmall;
       @if $cornerY == top {
-        // border-bottom: $borderLong;
         border-bottom-width: $borderLong;
       } @else {
-        // border-top: $borderLong
         border-top-width: $borderLong;
       }
     } @else {
       #{$cornerY}: 0;
       #{$cornerX}: $overflowAmt;
-      // border-#{$cornerY}: $colorBorder;
-      // border-#{$cornerX}: $borderSmall;
-
       border-#{$cornerY}-color: $colorBorder;
       border-#{$cornerY}-width: $colorBorderWidth;
       border-#{$cornerX}-width: $borderSmall;
       @if $cornerX == right {
-        // border-left: $borderLong;
         border-left-width: $borderLong;
       } @else {
-        // border-right: $borderLong
         border-right-width: $borderLong;
       }
     }
