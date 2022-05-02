@@ -9,42 +9,19 @@
   margin: 0;
   padding: 20px 20px 100px;
   background: $table-color;
-  .block {
+  .block-wrapper {
     display: block;
     position: relative;
     width: 100%;
     max-width: $section-max-width;
     margin: 0 auto 100px;
-    padding: 80px 40px;
-    background: $paper-color;
-    box-shadow: 8px 3px 16px 3px rgba($primary-dark, 0.2);
-    border-radius: 0;
-    z-index: $z-index-main - 3;
-    &:nth-child(1) {
-      @include paper-corner(50px, 12px, left, bottom, true, $paper-color-shadow, after);
-      @include paper-corner(90px, 30px, right, top, false, $paper-color-shadow, before);
-    }
-    &:nth-child(2) {
-      @include paper-corner(80px, 20px, left, top, true, $paper-color-shadow, after);
-      @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
-    }
-    &:nth-child(3) {
-      @include paper-corner(80px, 20px, left, bottom, false, $paper-color-shadow, after);
-      @include paper-corner(120px, 30px, right, bottom, false, $paper-color-shadow, before);
-    }
-    &:nth-child(4) {
-      @include paper-corner(70px, 15px, left, top, false, $paper-color-shadow, after);
-    }
-    &:nth-child(5) {
-      @include paper-corner(80px, 20px, right, top, true, $paper-color-shadow, after);
-      @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
-    }
     &.mobile-only {
       display: none;
     }
-    &.has-ink-spill .element {
+    &.has-ink-spill {
       h1, h2, h3, h4, h5, h6, p, button, li {
         color: $paper-color;
+        z-index: $z-index-main;
       }
       a, button {
         color: $paper-color;
@@ -55,97 +32,127 @@
         }
       }
     }
-    .element {
+    .block {
       display: block;
       position: relative;
       width: 100%;
-      max-width: $content-max-width;
-      margin: 0 auto 50px;
-      padding: 60px 40px;
-      border-image-source: url('/assets/block-border.png');
-      border-image-slice: 20% 10.5% 23% 12.5% fill;
-      // border-image-width: 12% 6% 14% 8%;
-      border-image-width: 57px 65px 65px 80px;
-      // border-image-outset: 10px 14px 27px 15px;
-      border-image-outset: 0px 6px 4px 9px;
-      border-image-repeat: round;
-      z-index: $z-index-main;
-      &:last-child {
-        margin-bottom: 0;
+      padding: 80px 40px;
+      background: $paper-color;
+      box-shadow: 8px 3px 16px 3px rgba($primary-dark, 0.2);
+      border-radius: 0;
+      z-index: $z-index-main - 3;
+      &:nth-child(1) {
+        @include paper-corner(50px, 12px, left, bottom, true, $paper-color-shadow, after);
+        @include paper-corner(90px, 30px, right, top, false, $paper-color-shadow, before);
       }
-
-      .element-head {
-        margin: 10px 0 0;
+      &:nth-child(2) {
+        @include paper-corner(80px, 20px, left, top, true, $paper-color-shadow, after);
+        @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
       }
-      .element-subhead {
-        margin: 10px 0 0;
-        font-weight: 400;
+      &:nth-child(3) {
+        @include paper-corner(80px, 20px, left, bottom, false, $paper-color-shadow, after);
+        @include paper-corner(120px, 30px, right, bottom, false, $paper-color-shadow, before);
       }
-      .element-date {
+      &:nth-child(4) {
+        @include paper-corner(70px, 15px, left, top, false, $paper-color-shadow, after);
+      }
+      &:nth-child(5) {
+        @include paper-corner(80px, 20px, right, top, true, $paper-color-shadow, after);
+        @include paper-corner(120px, 30px, right, bottom, true, $paper-color-shadow, before);
+      }
+      
+      .element {
         display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0;
-        padding: 15px 20px;
+        position: relative;
+        width: 100%;
+        max-width: $content-max-width;
+        margin: 0 auto 50px;
+        padding: 60px 40px;
         border-image-source: url('/assets/block-border.png');
         border-image-slice: 20% 10.5% 23% 12.5% fill;
-        border-image-width: 0px 0px 65px 80px;
-        border-image-outset: 0px 0px 8px 4px;
+        // border-image-width: 12% 6% 14% 8%;
+        border-image-width: 57px 65px 65px 80px;
+        // border-image-outset: 10px 14px 27px 15px;
+        border-image-outset: 0px 6px 4px 9px;
         border-image-repeat: round;
-      }
-      .element-content {
-        margin: 20px 0 0;
-      }
-      &.element-has-sub {
-        padding-left: 25px;
-        padding-right: 25px;
+        z-index: $z-index-main;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .element-head {
+          margin: 10px 0 0;
+        }
+        .element-subhead {
+          margin: 10px 0 0;
+          font-weight: 400;
+        }
+        .element-date {
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 15px 20px;
+          border-image-source: url('/assets/block-border.png');
+          border-image-slice: 20% 10.5% 23% 12.5% fill;
+          border-image-width: 0px 0px 65px 80px;
+          border-image-outset: 0px 0px 8px 4px;
+          border-image-repeat: round;
+        }
         .element-content {
-          display: flex;
-          flex-wrap: nowrap;
-          justify-content: space-between;
-          align-items: center;
-          .element-sub-wrapper {
+          margin: 20px 0 0;
+        }
+        &.element-has-sub {
+          padding-left: 25px;
+          padding-right: 25px;
+          .element-content {
             display: flex;
-            flex-direction: column;
             flex-wrap: nowrap;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-right: 20px;
-            flex: 2 1 60%;
-            &:last-child {
-              margin-bottom: 0;
+            align-items: center;
+            .element-sub-wrapper {
+              display: flex;
+              flex-direction: column;
+              flex-wrap: nowrap;
+              justify-content: space-between;
+              align-items: flex-start;
+              margin-right: 20px;
+              flex: 2 1 60%;
+              &:last-child {
+                margin-bottom: 0;
+              }
             }
-          }
-          .element-sub {
-            margin-bottom: 30px;
-            flex: 1 1 30%;
-            padding-left: 25px;
-            padding-right: 25px;
-            &:last-child {
-              margin: 0;
-            }
-            .element-head, .element-subhead {
-              text-align: left;
+            .element-sub {
+              margin-bottom: 30px;
+              flex: 1 1 30%;
+              padding-left: 25px;
+              padding-right: 25px;
+              &:last-child {
+                margin: 0;
+              }
+              .element-head, .element-subhead {
+                text-align: left;
+              }
             }
           }
         }
+
+
       }
-
-
     }
-  }
-  .detail-image {
-    display: block;
-    position: absolute;
-    z-index: $z-index-main + 1;
-    opacity: 1;
+    .detail-image {
+      display: block;
+      position: absolute;
+      z-index: $z-index-main + 1;
+      opacity: 1;
+    }
   }
 }
 
 @media #{$bp-tablet-portrait-down} {
   .App {
-    .block .element.element-has-sub .element-content {
+    .block-wrapper .block .element.element-has-sub .element-content {
       display: block;
       .element-sub-wrapper {
         display: block;
@@ -163,31 +170,33 @@
   .App {
     padding-left: 10px;
     padding-right: 10px;
-    .block {
+    .block-wrapper {
       margin: 0 auto 50px;
-      padding: 40px 20px;
       &.mobile-only {
         display: block;
       }
-      .element {
-        margin-bottom: 20px;
+      .block {
         padding: 40px 20px;
-        .element-date {
-          padding: 10px 12px;
-          border-image-outset: 0px 0px 3px 4px;
-        }
-        &.element-has-sub {
-          padding-left: 15px;
-          padding-right: 15px;
-          .element-content .element-sub-wrapper {
-            margin-bottom: 20px;
+        .element {
+          margin-bottom: 20px;
+          padding: 40px 20px;
+          .element-date {
+            padding: 10px 12px;
+            border-image-outset: 0px 0px 3px 4px;
           }
-          .element-sub {
-            margin-bottom: 20px;
+          &.element-has-sub {
             padding-left: 15px;
             padding-right: 15px;
-            .element-head, .element-subhead {
-              text-align: left;
+            .element-content .element-sub-wrapper {
+              margin-bottom: 20px;
+            }
+            .element-sub {
+              margin-bottom: 20px;
+              padding-left: 15px;
+              padding-right: 15px;
+              .element-head, .element-subhead {
+                text-align: left;
+              }
             }
           }
         }

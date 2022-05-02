@@ -3,10 +3,11 @@
 .ink-bottle {
   display: block;
   position: absolute;
-  top: 35px;
-  left: 5%;
-  width: 165px;
-  // width: 25%;
+  // top: -2%;
+  bottom: calc(100% - 95px);
+  left: 3%;
+  width: 250px;
+  // width: 20%;
   // max-width: 275px;
   z-index: $z-index-main - 1;
   transition: all 0.3s cubic-bezier(.75,0,1,.5);
@@ -45,6 +46,14 @@
 
 @media #{$bp-tablet-portrait-down} {
   .ink-bottle {
-    display: none;
+    bottom: calc(100% - 75px);
+    width: 200px;
+  }
+}
+
+@media #{$bp-mobile} {
+  .ink-bottle {
+    bottom: calc(100% - 40px);
+    width: 140px;
   }
 }
