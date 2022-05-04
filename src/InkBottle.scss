@@ -1,16 +1,40 @@
 @import './styles/variables-and-helpers.scss';
 
+$ink-bottle-anim-speed: 0.3s;
+
+.ink-blot {
+  display: block;
+  position: absolute;
+  top: 10px;
+  // bottom: 0;
+  left: 50%;
+  // right: 0;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  z-index: $z-index-main - 2;
+  transition: all 2s ease-out;
+  &.ink-blot-show {
+    width: 100%;
+    height: calc(100% - 10px);
+  }
+  .ink-blot-bg {
+    fill: $custom-pink;
+  }
+}
+
 .ink-bottle {
   display: block;
   position: absolute;
   // top: -2%;
   bottom: calc(100% - 95px);
-  left: 3%;
+  // left: 3%;
+  left: 19%;
   width: 250px;
   // width: 20%;
   // max-width: 275px;
   z-index: $z-index-main - 1;
-  transition: all 0.3s cubic-bezier(.75,0,1,.5);
+  transition: all $ink-bottle-anim-speed cubic-bezier(.75,0,1,.5);
   transform: rotate(0deg);
 
   .bottle-background-fill {
@@ -48,6 +72,7 @@
   .ink-bottle {
     bottom: calc(100% - 75px);
     width: 200px;
+    left: 10%;
   }
 }
 
@@ -55,5 +80,6 @@
   .ink-bottle {
     bottom: calc(100% - 40px);
     width: 140px;
+    left: 2%;
   }
 }
