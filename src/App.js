@@ -54,10 +54,44 @@ function App() {
   // Ink Blot Info
   const [inkBlotScale, setInkBlotScale] = useState(0);
   const inkBlotSectionRef = useRef(null);
-  let inkBlotScaleX = inkBlotScale * 3;
+  let inkBlotScaleX = inkBlotScale * 4;
   inkBlotScaleX = inkBlotScaleX > 1 ? 1 : inkBlotScaleX;
   let inkBlotTransform = "translate(475, 5) scale(" + inkBlotScaleX + ", " + inkBlotScale + ") translate(-475, -5)";
 
+
+  // const [scrollAmt, setScrollAmt] = useState(0);
+  const handleInkScroll = () => {
+    // let currentScrollAmount = window && window.pageYOffset;
+    let windowHeight = window && window.innerHeight;
+
+    // Ink Bottle Tip Animation
+    if (!(inkBottleTipRef && inkBottleTipRef.current) && windowHeight) {
+      let inkBottleClientRect = inkBottle && inkBottle.current && inkBottle.current.getBoundingClientRect();
+      let inkBottleTop = inkBottleClientRect && inkBottleClientRect.top;
+      
+      if (inkBottleTop && ((windowHeight * 0.4) > inkBottleTop)) {
+        setInkBottleTip(true);
+        inkBottleTipRef.current = true;
+      }
+    }
+
+    if (inkBottleTipRef && inkBottleTipRef.current && inkBlotSectionRef && inkBlotSectionRef.current) {
+      let sectionClientRect = inkBlotSectionRef.current.getBoundingClientRect();
+      let sectionHeight = sectionClientRect && sectionClientRect.height;
+      let sectionTop = sectionClientRect && sectionClientRect.top;
+      let visibleBlotBottom = windowHeight - 200;
+      let scrollAmt = (sectionTop - visibleBlotBottom) * -1;
+      if (0 > scrollAmt) {
+        scrollAmt = 0;
+      } else if (sectionHeight < scrollAmt) {
+        scrollAmt = sectionHeight;
+      }
+      let blotScale = scrollAmt / sectionHeight;
+      setInkBlotScale(blotScale);
+    }
+    
+  }
+  
   // const [scrollAmt, setScrollAmt] = useState(0);
   const handleScroll = () => {
     // let currentScrollAmount = window && window.pageYOffset;
@@ -107,43 +141,18 @@ function App() {
       }
     }
 
-    // Ink Bottle Tip Animation
-    if (!(inkBottleTipRef && inkBottleTipRef.current) && windowHeight) {
-      let inkBottleClientRect = inkBottle && inkBottle.current && inkBottle.current.getBoundingClientRect();
-      let inkBottleTop = inkBottleClientRect && inkBottleClientRect.top;
-      
-      if (inkBottleTop && ((windowHeight * 0.4) > inkBottleTop)) {
-        setInkBottleTip(true);
-        inkBottleTipRef.current = true;
-      }
-    }
-
-    if (inkBottleTipRef && inkBottleTipRef.current && inkBlotSectionRef && inkBlotSectionRef.current) {
-      let sectionClientRect = inkBlotSectionRef.current.getBoundingClientRect();
-      let sectionHeight = sectionClientRect && sectionClientRect.height;
-      let sectionTop = sectionClientRect && sectionClientRect.top;
-      let visibleBlotBottom = windowHeight - 200;
-      let scrollAmt = (sectionTop - visibleBlotBottom) * -1;
-      if (0 > scrollAmt) {
-        scrollAmt = 0;
-      } else if (sectionHeight < scrollAmt) {
-        scrollAmt = sectionHeight;
-      }
-      let blotScale = scrollAmt / sectionHeight;
-      setInkBlotScale(blotScale);
-    }
-
-
-
     // let currentScrollAmt = window.pageYOffset;
     // setScrollAmt(currentScrollAmt);
     
   }
 
+  // todo: optimize css and js animations to avoid "will-change" property
   useEffect(() => {
-    window.addEventListener('scroll', _throttle(handleScroll, 100), {passive: true});
+    window.addEventListener('scroll', _throttle(handleScroll, 500), {passive: true});
+    window.addEventListener('scroll', _throttle(handleInkScroll, 50), {passive: true});
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleInkScroll);
     }
   }, []);
 
@@ -182,7 +191,8 @@ function App() {
           <mask id="ink-blot-mask">
             <path className="ink-blot-expand" d="M1577.4.2c.6,198.5-40.4,234.6-108.7,403.2-99.7,247.4-198.2,568.4-351.6,735.1-129.9,141.1-444.5,159.1-633,159.1-377.5,0-658.6-181.8-805.7-545.6-377.7-722-378-777.5,0-1499.6,147.1-363.7,428.2-545.6,805.7-545.6,188.5,0,503.1,18,633,159.1C1270.5-967.3,1369-646.3,1468.7-399,1536.6-230.7,1577.1-197.3,1577.4.2Z" fill="url(#ink-spread-gradient)" transform={inkBlotTransform}/>
           </mask>
-          <path className="ink-blot-bg" d="M799.1,1189c-82.1,0-65.2-12.5-153.1-13-25.9-.1-37.2,20-118,22-94.5,2.4-259-11.4-275-15-81-18-118,4-177,4s-69-17.7-67-73,14-66,15-152S14,939,12,753-2,548,4,487s12-58,13-131S0,285.3,0,219.2,58,41,142.2,40C384,37,420,5,474,3,538,.6,590,29,738,36A882.4,882.4,0,0,1,851.2,49C867.1,49,899,60,899,77.8,899,156,872.4,188,877,254c4,57,10.9,104.5,13,225,1.3,72.8-6.3,110.5-10.7,236.2S893,1046.3,892,1101.1,881.3,1189,799.1,1189Z" mask="url(#ink-blot-mask)"/>
+          <rect className="ink-blot-bg ink-blot-bg-mobile" x="10" y="5" width="880" height="1190" rx="300" ry="20" mask="url(#ink-blot-mask)"/>
+          <path className="ink-blot-bg ink-blot-bg-desktop" d="M799.1,1189c-82.1,0-65.2-12.5-153.1-13-25.9-.1-37.2,20-118,22-94.5,2.4-259-11.4-275-15-81-18-118,4-177,4s-69-17.7-67-73,14-66,15-152S14,939,12,753-2,548,4,487s12-58,13-131S0,285.3,0,219.2,58,41,142.2,40C384,37,420,5,474,3,538,.6,590,29,738,36A882.4,882.4,0,0,1,851.2,49C867.1,49,899,60,899,77.8,899,156,872.4,188,877,254c4,57,10.9,104.5,13,225,1.3,72.8-6.3,110.5-10.7,236.2S893,1046.3,892,1101.1,881.3,1189,799.1,1189Z" mask="url(#ink-blot-mask)"/>
         </svg>
         <WideInkBottle className={inkBottleClasses} ref={inkBottle} />
         <section className="block">
